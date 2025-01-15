@@ -47,7 +47,7 @@ npm test
 
 To run a single test file, use:
 ```bash
-npx playwright test tests/<test-file-name>
+npx playwright test e2e/<test-file-name>
 ```
 
 ### Run Tests in Debug Mode
