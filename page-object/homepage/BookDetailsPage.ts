@@ -24,19 +24,22 @@ export class BookDetailsPage{
         this.bookImage = page.locator('.banner img').first();
     }
 
+    // validate books from the author
     async validateMoreBooks(booklist : Array<Book>){
         for(let i=0;i<booklist.length;i++){
             let book = booklist[i];
-            await expect(this.moreBooks.locator('.single-book-details .book-author').nth(i)).toContainText(book.author);
-            await expect(this.moreBooks.locator('.single-book-details .book-title').nth(i)).toContainText(book.title);
-            await expect(this.moreBooks.locator('.single-book-price').nth(i).locator('h6')).toContainText(book.price);
+            await expect(this.moreBooks.locator('.single-book-details .book-author').nth(i)).toContainText(book.author); // author
+            await expect(this.moreBooks.locator('.single-book-details .book-title').nth(i)).toContainText(book.title); // title
+            await expect(this.moreBooks.locator('.single-book-price').nth(i).locator('h6')).toContainText(book.price);  // price
         }
     }
 
+    // validate text from the sinopse
     async validateSinopse(sinopse : string){
         await expect(this.sinopse).toContainText(sinopse);   
     }
 
+    // validate details from the book such as dimensions etc
     async validateDetails(details :BookDetails | null){
         if (details) {
             await expect(this.details.nth(0)).toContainText(details.isbn ?? ''); // if its null checks with empty string
@@ -47,18 +50,23 @@ export class BookDetailsPage{
         }
     }
 
+    // buy book from the book details page
     async buyBook(){
         await this.buyBtn.click();
         await expect(this.page.locator('.add-to-cart .icontag').getAttribute('data-tag')).not.toBe('0');
     }
 
+    // go back to home page
     async backToHomePage(){
         await this.page.goto('https://www.leyaonline.com/pt/');
     }
+
+    // validate the img src
     async validateBookImage(url : string){
         await expect(this.bookImage.getAttribute('href')).toBe(url);
     }
-    
+   
+    // open the book details page
     async openBookDetailsPage(){
         this.page.locator('.single-search-book-item').nth(1).locator('.book-name').click();
     }
