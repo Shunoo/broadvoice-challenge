@@ -1,0 +1,16 @@
+{
+  "name": "broadvoice_playwright_challenge",
+  "version": "1.0.0",
+  "description": "qa challenge for broadvoice qa middle level",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.49.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.6"
+  }
+}
